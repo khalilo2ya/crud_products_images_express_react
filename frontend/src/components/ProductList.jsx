@@ -44,7 +44,7 @@ const ProductList = () => {
                 <div className="media">
                   <div className="media-content">
                     <p className="title is-4">{product.name}</p>
-                    <p className="subtitle is-6">@johnsmith</p>
+                    <p className="subtitle is-6">{product.description}</p>
                   </div>
                 </div>
               </div>

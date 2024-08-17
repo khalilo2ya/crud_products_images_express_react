@@ -8,12 +8,14 @@ const Product = db.define('product',{
     name: DataTypes.STRING,
     image: DataTypes.STRING,
     url: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    price: DataTypes.FLOAT
 },{
    freezeTableName: true 
 })
 
 export default Product;
 
-// (async()=>{
-//     await db.sync();
-// })();
+//  (async()=>{
+//      await db.sync({ alter: true });
+//  })();

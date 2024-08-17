@@ -5,6 +5,8 @@ const EditProduct = () => {
     // const [productId, setProductID] = useState('');
     const [title, setTitle] = useState('');
     const [file, setFile] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
     const [preview, setPreview] = useState('');
     const {id} = useParams();
     const navigate = useNavigate();
@@ -21,8 +23,11 @@ const EditProduct = () => {
         try {
             const res = await axios.get(`http://localhost:5000/products/${id}`);
             setTitle(res.data.name);
+            setDescription(res.data.description);
+            setPrice(res.data.price );
             setFile(res.data.image);
             setPreview(res.data.url);
+
         } catch (err) {
             console.log(err);
         }
@@ -42,6 +47,8 @@ const EditProduct = () => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("title", title);
+        formData.append("description", description);
+        formData.append("price", price);
         try {
             await axios.patch(`http://localhost:5000/products/${id}`, formData, {
                 headers: {
@@ -63,6 +70,18 @@ const EditProduct = () => {
                         <label className="label">Product Name</label>
                         <div className="control">
                             <input type="text" className="input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Product Name' />
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label className="label">Desctipion</label>
+                        <div className="control">
+                            <input type="text" className="input" value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Product Description' />
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label className="label">Price</label>
+                        <div className="control">
+                            <input type="number" className="input" value={price} onChange={(e) => setPrice(e.target.value)} placeholder='Product Price' />
                         </div>
                     </div>
                     <div className="field">

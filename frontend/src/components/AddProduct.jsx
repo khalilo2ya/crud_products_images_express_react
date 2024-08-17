@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 const AddProduct = () => {
     const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
     const [file, setFile] = useState('');
     const [preview, setPreview] = useState('');
     const navigate = useNavigate();
@@ -17,6 +19,8 @@ const AddProduct = () => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("title", title);
+        formData.append("description", description);
+        formData.append("price", price);
         try {
             await axios.post('http://localhost:5000/products', formData, {
                 headers: {
@@ -38,6 +42,18 @@ const AddProduct = () => {
                         <label className="label">Product Name</label>
                         <div className="control">
                             <input type="text" className="input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Product Name' />
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label className="label">Desctipion</label>
+                        <div className="control">
+                            <input type="text" className="input" value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Product Description' />
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label className="label">Price</label>
+                        <div className="control">
+                            <input type="number" className="input" value={price} onChange={(e) => setPrice(e.target.value)} placeholder='Product Price' />
                         </div>
                     </div>
                     <div className="field">
