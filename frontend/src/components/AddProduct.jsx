@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 const AddProduct = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -45,9 +45,14 @@ const AddProduct = () => {
                         </div>
                     </div>
                     <div className="field">
-                        <label className="label">Desctipion</label>
+                        <label className="label">Description</label>
                         <div className="control">
-                            <input type="text" className="input" value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Product Description' />
+                            <textarea
+                                className="textarea"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder="Product Description"
+                            />
                         </div>
                     </div>
                     <div className="field">
@@ -81,6 +86,7 @@ const AddProduct = () => {
                     <div className="field">
                         <div className="control">
                             <button className="button is-success">Save</button>
+                            <Link to="/" className='button is-warning ml-2'>Go back</Link>
                         </div>
 
                     </div>
