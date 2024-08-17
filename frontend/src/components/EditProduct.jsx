@@ -9,7 +9,7 @@ const EditProduct = () => {
     const {id} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const productId = location.pathname.split("/")[2];
+    // const productId = location.pathname.split("/")[2];
     
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const EditProduct = () => {
         formData.append("file", file);
         formData.append("title", title);
         try {
-            await axios.patch(`http://localhost:5000/products/${productId}`, formData, {
+            await axios.patch(`http://localhost:5000/products/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
